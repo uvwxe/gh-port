@@ -113,6 +113,15 @@
   font-family: var(--font-mono);
 }
 
+.example-card { text-decoration: none; color: inherit; display: block; }
+.example-preview.mock { flex-direction: column; gap: 12px; padding: 20px; align-items: stretch; justify-content: flex-start; }
+.mock-profile { display: flex; gap: 10px; align-items: center; }
+.mock-avatar { width: 36px; height: 36px; border-radius: 50%; background: #d2d2d7; flex-shrink: 0; }
+.mock-lines { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.mock-lines i { display: block; height: 8px; border-radius: 4px; background: #d2d2d7; }
+.mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mock-grid span { height: 34px; border-radius: 8px; background: #fff; border: 1px solid var(--border); }
+
 .example-info {
   padding: 16px 20px;
 }

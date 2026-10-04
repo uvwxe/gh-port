@@ -22,7 +22,9 @@ export class Router {
     const tokenMatch = hash.match(/token=([^&]+)/);
     if (tokenMatch) {
       sessionStorage.setItem('gh_token', tokenMatch[1]);
-      window.location.hash = '#builder';
+      const pending = sessionStorage.getItem('gh_pending_user');
+      sessionStorage.removeItem('gh_pending_user');
+      window.location.hash = pending ? `#builder?u=${encodeURIComponent(pending)}` : '#builder';
       return;
     }
 

@@ -33,7 +33,9 @@ export async function fetchUser(username: string): Promise<GitHubUser> {
   const res = await fetch(`${API_BASE}/users/${username}`, {
     headers: { Accept: 'application/vnd.github.v3+json' },
   });
-  if (!res.ok) throw new Error(`User not found: ${username}`);
+  if (res.status === 404) throw new Error(`User not found: ${username}`);
+  if (res.status === 403) throw new Error('GitHub rate limit hit — try again in a few minutes');
+  if (!res.ok) throw new Error(`GitHub error (${res.status}) — try again`);
   return res.json();
 }
 
@@ -42,6 +44,7 @@ export async function fetchRepos(username: string): Promise<GitHubRepo[]> {
     `${API_BASE}/users/${username}/repos?per_page=100&sort=updated&type=owner`,
     { headers: { Accept: 'application/vnd.github.v3+json' } }
   );
+  if (res.status === 403) throw new Error('GitHub rate limit hit — try again in a few minutes');
   if (!res.ok) throw new Error(`Failed to fetch repos for: ${username}`);
   const data: GitHubRepo[] = await res.json();
   return data.filter((r) => !r.fork && !r.archived);

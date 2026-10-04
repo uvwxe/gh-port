@@ -16,33 +16,36 @@ export function LandingPage(container: HTMLElement) {
     <div class="examples-section">
       <h2 class="examples-title">See what it looks like</h2>
       <div class="examples-grid">
-        <div class="example-card">
-          <div class="example-preview">
-            <span>portfolio preview</span>
+        <a class="example-card" href="#builder?u=torvalds">
+          <div class="example-preview mock">
+            <div class="mock-profile"><span class="mock-avatar"></span><span class="mock-lines"><i style="width:60%"></i><i style="width:40%"></i></span></div>
+            <div class="mock-grid"><span></span><span></span><span></span><span></span></div>
           </div>
           <div class="example-info">
             <div class="example-username">torvalds</div>
-            <div class="example-repos">6 repos &middot; linux kernel</div>
+            <div class="example-repos">linux kernel</div>
           </div>
-        </div>
-        <div class="example-card">
-          <div class="example-preview">
-            <span>portfolio preview</span>
+        </a>
+        <a class="example-card" href="#builder?u=gaearon">
+          <div class="example-preview mock">
+            <div class="mock-profile"><span class="mock-avatar"></span><span class="mock-lines"><i style="width:55%"></i><i style="width:35%"></i></span></div>
+            <div class="mock-grid"><span></span><span></span><span></span><span></span></div>
           </div>
           <div class="example-info">
             <div class="example-username">gaearon</div>
-            <div class="example-repos">89 repos &middot; React core</div>
+            <div class="example-repos">React core</div>
           </div>
-        </div>
-        <div class="example-card">
-          <div class="example-preview">
-            <span>portfolio preview</span>
+        </a>
+        <a class="example-card" href="#builder?u=karpathy">
+          <div class="example-preview mock">
+            <div class="mock-profile"><span class="mock-avatar"></span><span class="mock-lines"><i style="width:50%"></i><i style="width:45%"></i></span></div>
+            <div class="mock-grid"><span></span><span></span><span></span><span></span></div>
           </div>
           <div class="example-info">
             <div class="example-username">karpathy</div>
-            <div class="example-repos">45 repos &middot; AI researcher</div>
+            <div class="example-repos">AI researcher</div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
 

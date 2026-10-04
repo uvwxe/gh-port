@@ -8,8 +8,9 @@ function getClientId(): string {
   return import.meta.env.VITE_GITHUB_CLIENT_ID || '';
 }
 
-export async function startOAuth(): Promise<string> {
+export async function startOAuth(pendingUser?: string): Promise<string> {
   const clientId = getClientId();
+  if (pendingUser) sessionStorage.setItem('gh_pending_user', pendingUser);
   const redirect = window.location.origin + '/api/auth';
   const scope = 'public_repo user';
   const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirect)}&scope=${encodeURIComponent(scope)}`;
@@ -29,7 +30,7 @@ export async function publishPortfolio(
     if (!clientId) {
       throw new Error('GitHub OAuth not configured. Set VITE_GITHUB_CLIENT_ID.');
     }
-    token = await startOAuth();
+    token = await startOAuth(username);
   }
 
   const res = await fetch(`${API_BASE}/publish`, {

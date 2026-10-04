@@ -5,7 +5,7 @@ export function PortfolioPreview(html: string): HTMLElement {
   const iframe = document.createElement('iframe');
   iframe.className = 'portfolio-preview-frame';
   iframe.srcdoc = html;
-  iframe.setAttribute('sandbox', 'allow-scripts');
+  iframe.setAttribute('sandbox', 'allow-popups allow-popups-to-escape-sandbox');
 
   wrapper.appendChild(iframe);
   return wrapper;
