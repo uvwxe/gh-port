@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Turn your GitHub profile into a stunning Apple-style portfolio in 30 seconds. Free forever.">
+  <title>GitHub Portfolio Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/variables.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/landing.css">
+  <link rel="stylesheet" href="/src/styles/builder.css">
+  <link rel="stylesheet" href="/src/styles/publishing.css">
+  <style>
+    .builder-preview-layout { animation: fadeUp 0.4s ease both; }
+    .builder-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+    .builder-header h2 { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
+    .builder-content { display: flex; gap: 32px; }
+    .builder-sidebar { width: 240px; flex-shrink: 0; }
+    .builder-sidebar h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .sidebar-subtitle { font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; }
+    .selected-count { font-size: 12px; color: var(--text-secondary); margin-top: 12px; }
+    .builder-main { flex: 1; min-width: 0; }
+    .repo-selector-list { display: flex; flex-direction: column; gap: 2px; max-height: 400px; overflow-y: auto; }
+    .repo-selector-row { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: var(--radius-sm); font-size: 13px; cursor: pointer; transition: background var(--transition); }
+    .repo-selector-row:hover { background: rgba(0, 0, 0, 0.03); }
+    .repo-selector-row input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; }
+    .repo-selector-name { flex: 1; font-family: var(--font-mono); font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .repo-selector-lang { font-size: 11px; color: var(--text-secondary); flex-shrink: 0; }
+    .portfolio-preview-wrapper { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--card-bg); }
+    .portfolio-preview-frame { width: 100%; height: 600px; border: none; display: block; }
+    @media (max-width: 768px) {
+      .builder-content { flex-direction: column; }
+      .builder-sidebar { width: 100%; }
+      .builder-header { flex-wrap: wrap; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
