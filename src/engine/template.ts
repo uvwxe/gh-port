@@ -46,6 +46,8 @@ function fmtDate(iso: string): string {
 
 function repoCard(repo: GitHubRepo, i: number): string {
   const langColor = repo.language ? (LANG_COLORS[repo.language] || '#6e6e73') : null;
+  const stars = repo.stargazers_count > 0 ? `<span class="repo-stars">${repo.stargazers_count} star${repo.stargazers_count === 1 ? '' : 's'}</span>` : '';
+  const forks = repo.forks_count > 0 ? `<span class="repo-forks">${repo.forks_count} fork${repo.forks_count === 1 ? '' : 's'}</span>` : '';
   return `
     <a href="${esc(repo.html_url)}" class="repo-card" style="animation-delay:${i * 0.05}s" target="_blank" rel="noopener">
       <div class="repo-card-top">
@@ -55,8 +57,8 @@ function repoCard(repo: GitHubRepo, i: number): string {
       ${repo.description ? `<p class="repo-desc">${esc(repo.description)}</p>` : ''}
       <div class="repo-meta">
         ${langColor ? `<span class="repo-lang"><span class="lang-dot" style="background:${langColor}"></span>${esc(repo.language!)}</span>` : ''}
-        <span class="repo-stars">${repo.stargazers_count} stars</span>
-        <span class="repo-forks">${repo.forks_count} forks</span>
+        ${stars}
+        ${forks}
         <span class="repo-updated">Updated ${fmtDate(repo.updated_at)}</span>
       </div>
     </a>`;
@@ -147,8 +149,8 @@ export function renderPortfolio(profile: GitHubUser, repos: GitHubRepo[]): strin
         ${profile.bio ? `<p class="bio">${esc(profile.bio)}</p>` : ''}
         <div class="stats-row">
           <span><strong>${profile.public_repos}</strong> repos</span>
-          <span><strong>${profile.followers}</strong> followers</span>
-          <span><strong>${profile.following}</strong> following</span>
+          ${profile.followers > 0 ? `<span><strong>${profile.followers}</strong> followers</span>` : ''}
+          ${profile.following > 0 ? `<span><strong>${profile.following}</strong> following</span>` : ''}
         </div>
         <div class="extra-links">
           ${profile.blog ? `<a href="${profile.blog.replace(/^https?:\/\//, '') === profile.blog ? 'https://' + profile.blog : profile.blog}" target="_blank" rel="noopener">${profile.blog.replace(/^https?:\/\//, '')}</a>` : ''}

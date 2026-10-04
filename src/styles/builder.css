@@ -87,6 +87,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .example-card {
@@ -121,6 +124,20 @@
 .mock-lines i { display: block; height: 8px; border-radius: 4px; background: #d2d2d7; }
 .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .mock-grid span { height: 34px; border-radius: 8px; background: #fff; border: 1px solid var(--border); }
+
+@media (max-width: 560px) {
+  .hero-section { padding: 64px 0 48px; }
+  .hero-title { font-size: 38px; }
+  .input-group { flex-direction: column; align-items: stretch; border-radius: var(--radius); padding: 8px; gap: 8px; }
+  .input-prefix { text-align: center; padding-top: 8px; }
+  .input-group input { text-align: center; }
+  .input-group .btn-primary { width: 100%; }
+  .examples-section { padding: 48px 0; }
+  .examples-grid { grid-template-columns: 1fr; }
+  .pricing-cards { grid-template-columns: 1fr; }
+}
+
+.builder-preview-layout { max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; }
 
 .example-info {
   padding: 16px 20px;
